@@ -1,11 +1,36 @@
 // React.createClass is the function to create components 
 // render is the key and it's value is an anonymous function that vanilla JS
-const ProductList = React.createClass({ render: function () {
-return (
-<div className='ui items'>
-        Hello, friend! I am a basic React component.
+const Product = React.createClass({
+  render: function () {
+	return (
+    <div className='item'>
+      <div className='image'>
+        <img src='images/products/image-aqua.png' />
       </div>
-); },
+      <div className='middle aligned content'>
+        <div className='description'>
+          <a>Fort Knight</a>
+          <p>Authentic renaissance actors, delivered in just two weeks.</p>
+        </div>
+        <div className='extra'>
+          <span>Submitted by:</span>
+          <img
+            className='ui avatar image'
+            src='images/avatars/daniel.jpg'
+          />
+        </div>
+      </div>
+		</div>
+	); },
+});
+
+const ProductList = React.createClass({
+  render: function () {
+    return (
+      <div className='ui items'>
+				<Product />
+			</div> );
+	}, 
 });
 
 ReactDOM.render(<ProductList />, document.getElementById('content'));
