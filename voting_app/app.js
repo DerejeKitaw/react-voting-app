@@ -34,11 +34,31 @@ const Product = React.createClass({
 
 
 const ProductList = React.createClass({
+	getInitialState: function(){
+		return {
+			products: []
+		};
+	},
+	componentDidMount: function(){
+		this.updateState();
+	},
+	updateState: function(){
+		const products = Data.sort((a, b) => {
+			return b.votes - a.votes;
+		});
+		this.setState({products: products});
+	},
 	handleProductUpVote: function (productID) {
-		console.log(productID + " was upvoted.");
+		Data.forEach((el) => {
+			if (el.id === productID){
+				el.votes = el.votes + 1;
+				return;
+			}
+		});
+		this.updateState();
 	},
   render: function () {
-  	const products = Data.map((product) => {
+  	const products = this.state.products.map((product) => {
   		return (
   			<Product 
   				key={'product-' + product.id}
