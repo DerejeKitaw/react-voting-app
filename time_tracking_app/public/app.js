@@ -5,7 +5,7 @@ const TimersDashboard = React.createClass({
 				<div className='column'>
 					<EditableTimerList />
 					<ToggleableTimerForm
-						isOpen={true}
+						isOpen={false}
 					/>
 				</div>
 			</div>
@@ -22,14 +22,14 @@ const EditableTimerList = React.createClass({
 					project='Web Domination'
 					elapsed='8986300'
 					runningSince={null}
-					editFormOpen={false}
+					editFormOpen={true}
 				/>
 				<EditableTimer
 					title='Learn Extreme Ironing'
 					project='World Domination'
 					elapsed='3890985'
 					runningSince={null}
-					editFormOpen={true}
+					editFormOpen={false}
 				/>
 			</div>
 		);
@@ -138,7 +138,7 @@ const Timer = React.createClass({
 	}, 
 });
 
-ReactDom.render(
-	<TimersDashboard />
+ReactDOM.render(
+	<TimersDashboard />,
 	document.getElementById('content')
 );
